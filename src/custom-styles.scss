@@ -1,0 +1,233 @@
+@import "../node_modules/bootstrap/scss/functions";
+
+$basic-semantics: "primary", "secondary", "info";
+
+$neutral-lightness: (
+  "black": 0%,
+);
+
+@function colors-from-lightness($lightnesses) {
+  $_map: ();
+  @each $key, $value in $lightnesses {
+    $_map: map-merge($_map, (#{$key}: hsl(0, 0%, $value)));
+  }
+  @return $_map;
+}
+
+$custom-neutral-colors: colors-from-lightness($neutral-lightness);
+
+$min-contrast-ratio: 3;
+
+@import "../node_modules/bootstrap/scss/variables";
+
+$theme-colors: map-merge($theme-colors, $custom-neutral-colors);
+
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 4. Include any optional Bootstrap CSS as needed
+//@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+//@import "../node_modules/bootstrap/scss/type";
+//@import "../node_modules/bootstrap/scss/images";
+//@import "../node_modules/bootstrap/scss/containers";
+//@import "../node_modules/bootstrap/scss/grid";
+//@import "../node_modules/bootstrap/scss/tables";
+//@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+//@import "../node_modules/bootstrap/scss/transitions";
+//@import "../node_modules/bootstrap/scss/dropdown";
+//@import "../node_modules/bootstrap/scss/button-group";
+//@import "../node_modules/bootstrap/scss/nav";
+//@import "../node_modules/bootstrap/scss/navbar";
+//@import "../node_modules/bootstrap/scss/card";
+//@import "../node_modules/bootstrap/scss/accordion";
+//@import "../node_modules/bootstrap/scss/breadcrumb";
+//@import "../node_modules/bootstrap/scss/pagination";
+//@import "../node_modules/bootstrap/scss/badge";
+//@import "../node_modules/bootstrap/scss/alert";
+//@import "../node_modules/bootstrap/scss/progress";
+//@import "../node_modules/bootstrap/scss/list-group";
+//@import "../node_modules/bootstrap/scss/close";
+//@import "../node_modules/bootstrap/scss/toasts";
+//@import "../node_modules/bootstrap/scss/modal";
+//@import "../node_modules/bootstrap/scss/tooltip";
+//@import "../node_modules/bootstrap/scss/popover";
+//@import "../node_modules/bootstrap/scss/carousel";
+//@import "../node_modules/bootstrap/scss/spinners";
+//@import "../node_modules/bootstrap/scss/offcanvas";
+//@import "../node_modules/bootstrap/scss/placeholders";
+//@import "../node_modules/bootstrap/scss/helpers";
+
+//@import "../node_modules/bootstrap/scss/utilities/api";
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../public/fonts/roboto-v29-latin_cyrillic-regular.woff2")
+      format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("../public/fonts/roboto-v29-latin_cyrillic-regular.woff")
+      format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+  font-family: "Roboto";
+  background-color: lightgrey;
+  color: black;
+}
+
+.measures {
+  background: #ebf4e9;
+  width: 1584px;
+  margin: 32px auto;
+
+  .measures-header {
+    background-color: white;
+    height: 146px;
+    font-size: 40px;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+
+    .header-nav {
+      margin-left: 112px;
+
+      .header-nav-list {
+        list-style: none;
+        padding-left: 0px;
+        margin-bottom: 0;
+        display: flex;
+
+        .header-nav-list__item {
+          &:not(:last-child) {
+            margin-right: 64px;
+          }
+
+          .header-nav-list__link {
+            padding-bottom: 44px;
+            text-decoration: none;
+            color: black;
+            opacity: 50%;
+
+            &:hover,
+            &:focus {
+              opacity: 100%;
+              border-bottom: 5px solid #10e926;
+              position: relative;
+
+              &::before {
+                content: "\254B";
+                color: #10e926;
+                font-size: 48px;
+                margin-top: -44px;
+                margin-left: -44px;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .measures-main {
+    width: 1584px;
+    height: 878px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .measures-nav {
+      background-color: white;
+      width: 486px;
+      height: 832px;
+      margin: 17px 15px 29px 19px;
+
+      .measure-nav-list {
+        list-style: none;
+        padding-top: 32px;
+        padding-left: 32px;
+        padding-right: 78px;
+        margin-bottom: 0;
+
+        .measure-nav-list__item {
+          height: 84px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+          display: flex;
+          flex-direction: column;
+
+          &:last-child {
+            border-bottom-color: transparent;
+          }
+
+          .measure-nav-list__link {
+            font-size: 24px;
+            line-height: 28px;
+            text-decoration: none;
+            color: inherit;
+            padding-top: 28px;
+            padding-bottom: 23px;
+            border-bottom: 5px solid transparent;
+
+            &:hover,
+            &:focus {
+              position: relative;
+              border-bottom-color: #10e926;
+
+              &::after {
+                content: "\1F86A";
+                color: #10e926;
+                font-size: 48px;
+                margin-right: -62px;
+                position: absolute;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .measures-content {
+      flex-grow: 1;
+      margin: 76px 27px auto 0;
+      word-wrap: break-word;
+      display: flex;
+
+      .measures-content-info {
+        width: 530px;
+
+        .measures-content-title {
+          font-size: 30px;
+          line-height: 34px;
+          margin-bottom: 48px;
+        }
+
+        .measures-content-text {
+          font-size: 22px;
+          line-height: 25px;
+          margin-bottom: 200px;
+        }
+      }
+
+      .measures-content-button {
+        background-color: black;
+        color: white;
+        font-size: 24px;
+        line-height: 28px;
+        width: 236px;
+        height: 60px;
+        border-radius: 7px;
+        border: none;
+      }
+
+      .measure-content-image {
+        margin-top: 67px;
+      }
+    }
+  }
+}
